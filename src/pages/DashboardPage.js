@@ -4,7 +4,7 @@ import ForecastBlock from '../components/ForecastBlock';
 import Loader from '../components/Loader';
 export default function DashboardPage() {
     const [weatherData, setWeatherData] = useState(null);
-    const today = new Date();
+    const [currentTime, setCurrentTime] = useState(new Date());
     useEffect(() => {
       fetchData()
         .then((data) => {
@@ -15,6 +15,10 @@ export default function DashboardPage() {
           console.error('Error:', error);
         });
     }, []); 
+
+    useEffect(()=>{
+      setInterval(()=>{setCurrentTime(new Date());}, 1000)
+    }, [currentTime, setCurrentTime])
     //The empty dependency array ensures the effect runs only once when the component mounts
   
     function formatTime(timeString) {
@@ -35,7 +39,7 @@ export default function DashboardPage() {
       }
 
       //formatting the hours to 24-hour format
-      return `${hours.toString().padStart(2, '0')}:${minutes}`;
+      return `${hours}:${minutes}`;
   }
 
     return (
@@ -50,7 +54,7 @@ export default function DashboardPage() {
             <h3>{weatherData.location.country}</h3>
           </section>
           <section className="time">
-          <p><b>Time:</b> <span>{today.getHours()}:{today.getUTCMinutes()}</span></p>
+          <p><b>Time:</b> <span>{currentTime.getHours()}:{currentTime.getUTCMinutes().toString().padStart(2, '0')}</span></p>
           <p><b>Sunrise:</b> <span>{formatTime(weatherData.forecast.forecastday[0].astro.sunrise)}</span></p>
           <p><b>Sunset:</b> <span>{formatTime(weatherData.forecast.forecastday[0].astro.sunset)}</span></p>
           </section>
@@ -67,7 +71,7 @@ export default function DashboardPage() {
 
 async function fetchData() {
         try {
-          const response = await fetch('http://api.weatherapi.com/v1/forecast.json?key=2a262ecb52ff45e6a75123135230711&q=Kyiv&days=5&aqi=no&alerts=no'); 
+         const response = await fetch('http://api.weatherapi.com/v1/forecast.json?key=2a262ecb52ff45e6a75123135230711&q=Kyiv&days=5&aqi=no&alerts=no'); 
           if (!response.ok) {
             throw new Error('Failed to fetch data');
           }
