@@ -8,7 +8,7 @@ export default function ThemeSwitch() {
 		
 			<div className="form-switch justify-content-center theme-switch">
 				<input
-                onClick={toggleTheme}
+                onChange={toggleTheme}
 					className="form-check-input switch"
 					type="checkbox"
 					role="switch"

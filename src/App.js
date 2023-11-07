@@ -21,7 +21,7 @@ function App() {
   return (
     <ThemeProvider>
       <div className="App">
-        <Router>
+        <Router basename="/">
           <Routes>
             <Route path="/" element={<LoginPage />} />
             <Route

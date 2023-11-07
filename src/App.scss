@@ -1,7 +1,7 @@
 $text-col-light: #231a35;
 $text-col1-light: rgba(35, 26, 53, 0.7);
 $text-col-dark: #ffffff;
-$text-col1-dark: rgba(255, 255, 255, 0.6);
+$text-col1-dark: rgba(255, 255, 255, 0.7);
 $main-col-light: #57b6ff;
 $main-col-light-hover: #0080e1;
 $main-col-dark: #755ef5;
@@ -26,6 +26,9 @@ $form-bg: rgba(255, 255, 255, 0.6);
 	background-color: $text-col-dark;
 	& .login-container {
 		background-image: url(assets/images/login-bg.png);
+	}
+	.header {
+		background-color: $text-col-dark;
 	}
 }
 .dark {
@@ -63,23 +66,29 @@ $form-bg: rgba(255, 255, 255, 0.6);
 	}
 	& .header {
 		border-color: $text-col1;
+		background-color: $text-col-light;
 		box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 	}
 
 	.forecast-block {
 		box-shadow: none;
-		.forecast-header {
-			border-bottom: 1px solid rgba($text-col1, 0.3);
-	
+		&.today {
+			background-color: $main-col;
+			background-image: linear-gradient(to bottom right, $main-col 50%, rgba($main-col-hover, 0.3) 50%);
+			
 		}
-		& .day-section {
+		.forecast-header {
+			//border-bottom: 1px solid rgba($text-col1, 0.3);
+	border-bottom: none;
+		}
+		
 			& .day {
 				color: $main-col;
 			}
 			& .date {
 				color: $text-col1;
 			}
-		}
+		
 		& h3 {
 			color: $text-col1;
 		}
@@ -225,6 +234,8 @@ $form-bg: rgba(255, 255, 255, 0.6);
 	padding: 2vw 6vw;
 	align-items: center;
 	border-bottom: 1px solid $text-col1;
+	position: sticky;
+	top: 0;
 }
 .logo-section {
 	display: flex;
@@ -262,6 +273,15 @@ $form-bg: rgba(255, 255, 255, 0.6);
 	box-shadow: 0 0 8px rgba($text-col1, .3);
 	justify-content: space-between;
 
+	&.today {
+		background-color: $main-col;
+		background-image: linear-gradient(to bottom right, $main-col 50%, rgba($main-col-hover, 0.3) 50%);
+
+		& .day {
+			color: white;
+		}
+	}
+
 	& h3 {
 		font-size: 1.25rem;
 		color: $text-col1;
@@ -272,6 +292,7 @@ $form-bg: rgba(255, 255, 255, 0.6);
 	border-bottom: 1px solid rgba($text-col1, 0.3);
 	padding: 12px;
 	border-radius: 10px 10px 0 0;
+	background: rgba(255, 255, 255, 0.1)
 }
 & .forecast-subheader {
 	display: flex;
@@ -286,7 +307,9 @@ $form-bg: rgba(255, 255, 255, 0.6);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		& .day {
+		
+	}
+	& .day {
 			color: $main-col;
 			margin-bottom: 0;
 		}
@@ -295,7 +318,6 @@ $form-bg: rgba(255, 255, 255, 0.6);
 			margin-bottom: 0;
 			
 		}
-	}
 	& .condition-icon {
 		align-self: center;
 		//min-width: 85px;
@@ -320,7 +342,7 @@ $form-bg: rgba(255, 255, 255, 0.6);
 		
 		& h2 {
 			color: $main-col;
-			font-size: 2.5rem;
+			font-size: 3rem;
 			margin-bottom: 0;
 		}
 		& h3 {

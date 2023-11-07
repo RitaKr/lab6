@@ -5,7 +5,7 @@ const ThemeProvider = ({ children }) => {
 	const [darkMode, setDarkMode] = React.useState(false);
 
 	function toggleTheme() {
-		console.log("state changed");
+		//console.log("state changed");
 		setDarkMode(!darkMode);
 		if (darkMode) {
 			document
@@ -19,7 +19,7 @@ const ThemeProvider = ({ children }) => {
 	}
 	
 	
-	console.log(ThemeContext);
+	//console.log(ThemeContext);
 	return (
 		<ThemeContext.Provider value={{ darkMode, toggleTheme}}>
 			{children}

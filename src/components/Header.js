@@ -15,7 +15,8 @@ export default function Header(){
             <button className="btn btn-primary button" onClick={(e)=>{
                 //useEffect(()=>{
                     setCookie('authenticated', false, { path: '/' });
-                    setCookie('rememberMe', false, { path: '/' });
+                    //setCookie('rememberMe', false, { path: '/' });
+                    //setCookie('uid', null, { path: '/' });
                     navigate('/');
                 //}, cookies.rememberMe)
                 

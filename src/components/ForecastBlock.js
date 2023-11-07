@@ -3,9 +3,9 @@ import { useEffect } from "react";
 export default function ForecastBlock({ forecast, formatTime }) {
     const today = new Date();
     const { day, date, astro } = forecast;
-    const { condition, daily_chance_of_rain, avghumidity, avgtemp_c, avgvis_km, maxtemp_c, mintemp_c, uv, maxwind_kph, wind_dir, pressure_mb } = day;
+    const { condition, daily_chance_of_rain, avghumidity, avgtemp_c, avgvis_km, maxtemp_c, mintemp_c, uv, maxwind_kph} = day;
     useEffect(() => {
-        console.log(date, astro.sunrise, astro.sunset, condition, daily_chance_of_rain, avghumidity, avgtemp_c, avgvis_km, maxtemp_c, mintemp_c, uv, maxwind_kph, wind_dir, pressure_mb);
+        //console.log(date, astro.sunrise, astro.sunset, condition, daily_chance_of_rain, avghumidity, avgtemp_c, avgvis_km, maxtemp_c, mintemp_c, uv, maxwind_kph, wind_dir, pressure_mb);
         //console.log(today.toDateString());
         determineDay(date)
     })
@@ -30,7 +30,7 @@ export default function ForecastBlock({ forecast, formatTime }) {
         }
     }
     return (
-        <section className="forecast-block">
+        <section className={"forecast-block" + (determineDay(date)==="Today" ?" today" :"")}>
             <header className="forecast-header">
                 <section className="forecast-subheader">
                     <section className="day-section">
