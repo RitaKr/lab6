@@ -23,10 +23,9 @@ function App() {
       <div className="App">
         <Router>
           <Routes>
-            <Route path="/" basename="/" element={<LoginPage />} />
+            <Route path="/" element={<LoginPage />} />
             <Route
               path="/dashboard"
-basename="/dashboard"
               element={
                 <PrivateRoute>
                   <DashboardPage />
