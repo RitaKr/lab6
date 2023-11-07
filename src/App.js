@@ -1,24 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
+import ThemeProvider from './providers/ThemeProvider';
+import Footer from './components/Footer';
+import { useCookies } from 'react-cookie';
+
+function PrivateRoute({ children }) {
+  const [cookies] = useCookies(['authenticated']);
+
+  if (!cookies.authenticated) {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <div className="App">
+        <Router>
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <DashboardPage />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </Router>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 }
 

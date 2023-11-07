@@ -1,0 +1,199 @@
+$text-col-light: #231a35;
+$text-col1-light: rgba(35, 26, 53, 0.7);
+$text-col-dark: #ffffff;
+$text-col1-dark: rgba(255, 255, 255, 0.6);
+$main-col-light: #57b6ff;
+$main-col-light-hover: #0080e1;
+$main-col-dark: #52459b;
+$main-col-dark-hover: #3a306f;
+$main-col: $main-col-light;
+$main-col-hover: $main-col-light-hover;
+$text-col: $text-col-light;
+$text-col1: $text-col1-light;
+$form-bg: rgba(255, 255, 255, 0.6);
+.App {
+	box-sizing: border-box;
+	position: relative;
+}
+.light {
+	$text-col: $text-col-light;
+	$text-col1: $text-col1-light;
+	$main-col: $main-col-light;
+	$main-col-hover: $main-col-light-hover;
+	color: $text-col;
+	$form-bg: rgba(255, 255, 255, 0.5);
+	background-color: $text-col-dark;
+	& .login-container {
+		background-image: url(assets/images/login-bg.png);
+	}
+}
+.dark {
+	$text-col: $text-col-dark;
+	$text-col1: $text-col1-dark;
+	$main-col: $main-col-dark;
+	$main-col-hover: $main-col-dark-hover;
+	color: $text-col;
+	$form-bg: rgba(255, 255, 255, 0.4);
+	background-color: $text-col-light;
+	& .login-form {
+		background: $form-bg;
+	}
+	& .login-container {
+		background-image: url(assets/images/login-bg-night.png);
+	}
+	& .button {
+		background: $main-col;
+		&:hover {
+			background: $main-col-hover;
+		}
+	}
+	& .login-input {
+		color: $text-col;
+
+		&::placeholder {
+			color: $text-col1;
+		}
+	}
+	& .remember-me {
+		& .form-check-input:checked {
+			background-color: $main-col;
+			border-color: $main-col-hover;
+		}
+	}
+	& .header {
+		border-color: $text-col1;
+		box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+	}
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.theme-switch {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 20px;
+
+	width: fit-content;
+	//padding: 8px;
+	& .switch {
+		//margin: 0 5px;
+		cursor: pointer;
+		height: 40px;
+		width: 70px;
+		background-color: $main-col-light;
+		background-image: url(assets/images/sun.png);
+		border: 2px solid rgba(255, 238, 181, 0.8);
+		box-shadow: 0 0 12px rgb(255, 238, 181);
+
+		&:checked {
+			background-color: $text-col;
+			background-image: url(assets/images/moon.png);
+			border-color: rgba(255, 255, 255, 0.5);
+			box-shadow: 0 0 12px rgba(255, 255, 255, 1);
+		}
+	}
+	& .switch-label {
+		margin-top: 5px;
+		font-size: 0.8rem;
+	}
+}
+
+.login-container {
+	width: 100vw;
+	height: 100vh;
+
+	background-position-x: center;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login-form {
+	width: 300px;
+	padding: 25px;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	backdrop-filter: blur(5px);
+	background: $form-bg;
+}
+.login-title {
+	text-align: center;
+}
+.form-label {
+	font-size: 0.9rem;
+	margin-top: 5px;
+}
+.login-input {
+	color: $text-col;
+	background: none;
+	border: 2px white solid;
+	&::placeholder {
+		color: $text-col1;
+	}
+	&:focus {
+		background: none;
+	}
+}
+.remember-me {
+	margin-top: 15px;
+	& .form-check-input {
+		background-color: rgba(255, 255, 255, 0.2);
+		border: 2px solid white;
+		padding: 6px;
+	}
+	& .form-check-input:checked {
+		background-color: $main-col;
+		border-color: $main-col-hover;
+	}
+}
+.button {
+	background: $main-col;
+	border: none;
+	transition: all 0.4s ease;
+	&:hover {
+		background: $main-col-hover;
+	}
+}
+.login-btn {
+	align-self: center;
+	width: 100%;
+}
+
+.dashboard-container {
+	min-height: 100vh;
+	width: 100vw;
+}
+.header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10px 30px;
+	align-items: center;
+	border-bottom: 1px solid $text-col1;
+
+    
+}
+.logo-section {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    
+    & .logo-img {
+        width: 40px;
+        margin-right: 8px;
+    }
+}
+.header-title {
+    margin: 0;
+}

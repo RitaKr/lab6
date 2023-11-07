@@ -1,38 +1,179 @@
 .App {
-  text-align: center;
+  box-sizing: border-box;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.light {
+  color: #231a35;
+  background-color: #ffffff;
+}
+.light .login-container {
+  background-image: url(assets/images/login-bg.png);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dark {
+  color: #ffffff;
+  background-color: #231a35;
+}
+.dark .login-form {
+  background: rgba(255, 255, 255, 0.4);
+}
+.dark .login-container {
+  background-image: url(assets/images/login-bg-night.png);
+}
+.dark .button {
+  background: #52459b;
+}
+.dark .button:hover {
+  background: #3a306f;
+}
+.dark .login-input {
+  color: #ffffff;
+}
+.dark .login-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.dark .remember-me .form-check-input:checked {
+  background-color: #52459b;
+  border-color: #3a306f;
+}
+.dark .header {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.theme-switch {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border-radius: 20px;
+  width: fit-content;
+}
+.theme-switch .switch {
+  cursor: pointer;
+  height: 40px;
+  width: 70px;
+  background-color: #57b6ff;
+  background-image: url(assets/images/sun.png);
+  border: 2px solid rgba(255, 238, 181, 0.8);
+  box-shadow: 0 0 12px rgb(255, 238, 181);
+}
+.theme-switch .switch:checked {
+  background-color: #231a35;
+  background-image: url(assets/images/moon.png);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 12px rgb(255, 255, 255);
+}
+.theme-switch .switch-label {
+  margin-top: 5px;
+  font-size: 0.8rem;
 }
 
-.App-link {
-  color: #61dafb;
+.login-container {
+  width: 100vw;
+  height: 100vh;
+  background-position-x: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-form {
+  width: 300px;
+  padding: 25px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.6);
 }
+
+.login-title {
+  text-align: center;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.login-input {
+  color: #231a35;
+  background: none;
+  border: 2px white solid;
+}
+.login-input::placeholder {
+  color: rgba(35, 26, 53, 0.7);
+}
+.login-input:focus {
+  background: none;
+}
+
+.remember-me {
+  margin-top: 15px;
+}
+.remember-me .form-check-input {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  padding: 6px;
+}
+.remember-me .form-check-input:checked {
+  background-color: #57b6ff;
+  border-color: #0080e1;
+}
+
+.button {
+  background: #57b6ff;
+  border: none;
+  transition: all 0.4s ease;
+}
+.button:hover {
+  background: #0080e1;
+}
+
+.login-btn {
+  align-self: center;
+  width: 100%;
+}
+
+.dashboard-container {
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
+  align-items: center;
+  border-bottom: 1px solid rgba(35, 26, 53, 0.7);
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.logo-section .logo-img {
+  width: 40px;
+  margin-right: 8px;
+}
+
+.header-title {
+  margin: 0;
+}
+
+/*# sourceMappingURL=App.css.map */
