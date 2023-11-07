@@ -43,7 +43,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://ritakr.github.io/lab6/",
+  "homepage": "https://ritakr.github.io/lab6",
   "devDependencies": {
     "gh-pages": "^6.0.0"
   }
