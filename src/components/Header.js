@@ -1,7 +1,7 @@
 import logo from "../assets/images/logo.png"
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-
+import ThemeSwitch from "./ThemeSwitch";
 export default function Header(){
     const [cookies, setCookie] = useCookies(['authenticated']);
     const navigate = useNavigate();
@@ -11,6 +11,7 @@ export default function Header(){
             <img src={logo} alt="logo" className="logo-img"/>
             <h1 className="header-title">Weather</h1>
             </section>
+            <ThemeSwitch/>
             <button className="btn btn-primary button" onClick={(e)=>{
                 //useEffect(()=>{
                     setCookie('authenticated', false, { path: '/' });

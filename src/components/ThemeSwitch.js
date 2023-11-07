@@ -13,6 +13,7 @@ export default function ThemeSwitch() {
 					type="checkbox"
 					role="switch"
 					id="flexSwitchCheckDefault"
+					checked={darkMode}
 				/>
 			{/* <label className="form-check-label switch-label" 
                 htmlFor="flexSwitchCheckDefault">

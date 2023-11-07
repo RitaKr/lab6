@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import LoginPage from "./pages/LoginPage";
 import DashboardPage from "./pages/DashboardPage";
 import ThemeProvider from './providers/ThemeProvider';
-import Footer from './components/Footer';
+
 import { useCookies } from 'react-cookie';
 
 function PrivateRoute({ children }) {
@@ -26,15 +26,10 @@ function App() {
             <Route path="/" element={<LoginPage />} />
             <Route
               path="/dashboard"
-              element={
-                <PrivateRoute>
-                  <DashboardPage />
-                </PrivateRoute>
-              }
+              element={<PrivateRoute><DashboardPage /></PrivateRoute>}
             />
           </Routes>
         </Router>
-        <Footer />
       </div>
     </ThemeProvider>
   );

@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
+import Footer from '../components/Footer';
 export default function LoginPage(props) {
     return (
         <div className="login-container">
             <LoginForm />
+            <Footer/>
         </div>
     )
 }

@@ -16,16 +16,16 @@
   background-color: #231a35;
 }
 .dark .login-form {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
 }
 .dark .login-container {
   background-image: url(assets/images/login-bg-night.png);
 }
 .dark .button {
-  background: #52459b;
+  background: #755ef5;
 }
 .dark .button:hover {
-  background: #3a306f;
+  background: #52459b;
 }
 .dark .login-input {
   color: #ffffff;
@@ -34,12 +34,33 @@
   color: rgba(255, 255, 255, 0.6);
 }
 .dark .remember-me .form-check-input:checked {
-  background-color: #52459b;
-  border-color: #3a306f;
+  background-color: #755ef5;
+  border-color: #52459b;
 }
 .dark .header {
   border-color: rgba(255, 255, 255, 0.6);
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+.dark .forecast-block {
+  box-shadow: none;
+}
+.dark .forecast-block .forecast-header {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+}
+.dark .forecast-block .day-section .day {
+  color: #755ef5;
+}
+.dark .forecast-block .day-section .date {
+  color: rgba(255, 255, 255, 0.6);
+}
+.dark .forecast-block h3 {
+  color: rgba(255, 255, 255, 0.6);
+}
+.dark .general-info-section .location h2 {
+  color: #755ef5;
+}
+.dark .general-info-section .location h3 {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .footer {
@@ -68,6 +89,7 @@
   background-image: url(assets/images/sun.png);
   border: 2px solid rgba(255, 238, 181, 0.8);
   box-shadow: 0 0 12px rgb(255, 238, 181);
+  align-self: center;
 }
 .theme-switch .switch:checked {
   background-color: #231a35;
@@ -150,14 +172,14 @@
 
 .dashboard-container {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
 }
 
 .header {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 10px 30px;
+  padding: 2vw 6vw;
   align-items: center;
   border-bottom: 1px solid rgba(35, 26, 53, 0.7);
 }
@@ -174,6 +196,115 @@
 
 .header-title {
   margin: 0;
+}
+
+.dashboard-main {
+  width: 100%;
+  max-width: 100vw;
+  padding: 4vw 6vw;
+}
+
+.forecast-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+  width: 100%;
+}
+
+.forecast-block {
+  width: 100%;
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.15) 50%);
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 8px rgba(35, 26, 53, 0.3);
+  justify-content: space-between;
+}
+.forecast-block h3 {
+  font-size: 1.25rem;
+  color: rgba(35, 26, 53, 0.7);
+  margin-bottom: 0;
+}
+.forecast-block .forecast-header {
+  border-bottom: 2px solid rgba(35, 26, 53, 0.7);
+  padding: 12px;
+  border-radius: 10px 10px 0 0;
+}
+.forecast-block .forecast-subheader {
+  display: flex;
+  justify-content: space-between;
+}
+.forecast-block .forecast-info {
+  padding: 12px;
+}
+.forecast-block .day-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.forecast-block .day-section .day {
+  color: #57b6ff;
+  margin-bottom: 0;
+}
+.forecast-block .day-section .date {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+.forecast-block .condition-icon {
+  align-self: center;
+}
+.forecast-block .temperature, .forecast-block .astro {
+  display: flex;
+  justify-content: space-between;
+}
+.forecast-block .temperature > *, .forecast-block .astro > * {
+  width: 50%;
+  text-align: left;
+}
+.forecast-block .astro {
+  margin: 0;
+}
+
+.general-info-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.general-info-section .location h2 {
+  color: #57b6ff;
+  font-size: 2.5rem;
+  margin-bottom: 0;
+}
+.general-info-section .location h3 {
+  color: rgba(35, 26, 53, 0.7);
+  font-size: 1.5rem;
+}
+.general-info-section .time * {
+  margin: 0;
+  display: flex;
+  gap: 0 10px;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 600px) {
+  .header {
+    padding: 10px 40px;
+  }
+  .dashboard-main {
+    padding: 4vw;
+  }
+  .forecast-container {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  .forecast-block {
+    width: 250px;
+    flex-shrink: 1;
+  }
 }
 
 /*# sourceMappingURL=App.css.map */
