@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+//import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 export default function DashboardPage() {
-    const [weatherData, setWeatherData] = useState(null);
+    //const [weatherData, setWeatherData] = useState(null);
   
     // useEffect(() => {
     //   fetchDataFromProxy()
@@ -22,16 +22,16 @@ export default function DashboardPage() {
     );
   }
 
-async function fetchDataFromProxy() {
-        try {
-          const response = await fetch('http://localhost:8080/fetchData'); // Replace with the correct URL of your proxy server
-          if (!response.ok) {
-            throw new Error('Failed to fetch data');
-          }
-          const data = await response.json();
-          return data;
-        } catch (error) {
-          console.error('Error fetching data:', error);
-          throw error;
-        }
-      }
+// async function fetchDataFromProxy() {
+//         try {
+//           const response = await fetch('http://localhost:8080/fetchData'); // Replace with the correct URL of your proxy server
+//           if (!response.ok) {
+//             throw new Error('Failed to fetch data');
+//           }
+//           const data = await response.json();
+//           return data;
+//         } catch (error) {
+//           console.error('Error fetching data:', error);
+//           throw error;
+//         }
+//       }

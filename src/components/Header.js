@@ -1,8 +1,7 @@
 import logo from "../assets/images/logo.png"
-import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { useState } from "react";
+
 export default function Header(){
     const [cookies, setCookie] = useCookies(['authenticated']);
     const navigate = useNavigate();
