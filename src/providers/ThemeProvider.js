@@ -1,31 +1,40 @@
-import React from "react";
-const ThemeContext = React.createContext();
+import {useEffect, useState, createContext, useContext} from 'react';
+import {useCookies} from 'react-cookie';
+const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
-	const [darkMode, setDarkMode] = React.useState(false);
+	const [cookies, setCookie] = useCookies();
+	const [darkMode, setDarkMode] = useState((cookies.theme === "dark")); //initiating darkMode accordingly to cookies value
 
-	function toggleTheme() {
-		//console.log("state changed");
-		setDarkMode(!darkMode);
+	//updating cookies and styles according to darkMode value
+	useEffect(()=>{
+		setCookie("theme", (darkMode ? "dark" : "light"), { path: '/' });
 		if (darkMode) {
 			document
-				.getElementById("root")
-				.classList.replace("dark", "light");
+				.getElementById("root").classList.replace("light", "dark");
+				
 		} else {
 			document
 				.getElementById("root")
-				.classList.replace("light", "dark");
+				.classList.replace("dark", "light");
 		}
+		
+	},[darkMode, setCookie]);
+
+	
+	//changing darkMode value na opposite
+	function toggleTheme() {
+		setDarkMode(!darkMode);
+	
 	}
 	
 	
-	//console.log(ThemeContext);
 	return (
 		<ThemeContext.Provider value={{ darkMode, toggleTheme}}>
 			{children}
 		</ThemeContext.Provider>
 	);
 };
-export const useThemeContext = () => React.useContext(ThemeContext);
+export const useThemeContext = () => useContext(ThemeContext);
 
 export default ThemeProvider;

@@ -6,19 +6,15 @@ export default function ThemeSwitch() {
 	
 	return (
 		
-			<div className="form-switch justify-content-center theme-switch">
+			<div className="form-switch theme-switch">
 				<input
                 onChange={toggleTheme}
 					className="form-check-input switch"
 					type="checkbox"
 					role="switch"
-					id="flexSwitchCheckDefault"
+					id="themeSwitch"
 					checked={darkMode}
 				/>
-			{/* <label className="form-check-label switch-label" 
-                htmlFor="flexSwitchCheckDefault">
-					Dark mode
-				</label> */}
 			</div>
 			
 		

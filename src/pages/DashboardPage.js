@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import ForecastBlock from '../components/ForecastBlock';
 import Loader from '../components/Loader';
 
+//component for wind direction arrow which is rotated by respective angle
 function WindArrow({ direction }) {
   let angle = 0;
   switch (direction) {
@@ -26,27 +27,54 @@ function WindArrow({ direction }) {
 
   return <span style={{ transform: `rotate(${angle}deg)` }}>↑</span>
 }
+
+//dashboard page
 export default function DashboardPage() {
-  const [weatherData, setWeatherData] = useState(null);
-  const [currentTime, setCurrentTime] = useState(new Date());
+  const [weatherData, setWeatherData] = useState(null); //weather data from api
+  const [currentTime, setCurrentTime] = useState(new Date()); //current time
+
+
+  //requesting geolocation and fetching weather data 
   useEffect(() => {
-    fetchData()
-      .then((data) => {
-        setWeatherData(data);
-        console.log('Data fetched successfully:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    //getting user's geolocation
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        //in case user permitted to send his location
+        const { latitude, longitude } = position.coords;
+        fetchData(`${latitude},${longitude}`)
+          .then((data) => {
+            setWeatherData(data);
+            console.log('Data for '+data.location.name+' fetched successfully:', data);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      },
+      (error) => {
+        console.error('Error getting geolocation:', error);
+        //in case user denied geolocation, fetch Kyiv as default
+        fetchData('Kyiv')
+        .then((data) => {
+          setWeatherData(data);
+          console.log('Data for Kyiv (default) fetched successfully:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      }
+    );
   }, []);
 
+  
+  //updating current time
   useEffect(() => {
     setInterval(() => { setCurrentTime(new Date()); }, 1000)
   }, [currentTime, setCurrentTime]);
 
+  //receives string with time in 12-hour format and returns string with time in 24-hour format
   function formatTime(timeString) {
     const timeParts = timeString.match(/^(\d+):(\d+) (AM|PM)$/);
-    // if string is not time
+    //if string is not time
     if (!timeParts) {
       return null;
     }
@@ -55,13 +83,13 @@ export default function DashboardPage() {
     const minutes = timeParts[2];
     const period = timeParts[3];
 
+    //formatting the hours to 24-hour format
     if (period === "PM" && hours < 12) {
       hours += 12;
     } else if (period === "AM" && hours === 12) {
       hours = 0;
     }
 
-    //formatting the hours to 24-hour format
     return `${hours}:${minutes}`;
   }
 
@@ -87,26 +115,22 @@ export default function DashboardPage() {
             {weatherData.forecast.forecastday.map(day => <ForecastBlock key={day.date_epoch} forecast={day} formatTime={formatTime} />)}
           </section>
         </main> :
-        <Loader />}
+        <Loader /> //displaying loader while data is fetching
+        }
 
     </div>
   );
 }
 
-async function fetchData() {
+//function that fetches data
+async function fetchData(location) {
   try {
-    const headers = new Headers();
-    // Add the required headers, including 'Access-Control-Allow-Origin'.
-    headers.append('Access-Control-Allow-Origin', '*');
+    const apiKey = '2a262ecb52ff45e6a75123135230711'; 
 
-    const requestOptions = {
-      method: 'GET',
-      headers: headers,
-    };
+    const url = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=5&aqi=no&alerts=no`;
 
-    const url = 'https://api.weatherapi.com/v1/forecast.json?key=2a262ecb52ff45e6a75123135230711&q=Kyiv&days=5&aqi=no&alerts=no';
-
-    const response = await fetch(url, requestOptions);
+    const response = await fetch(url);
+    
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }

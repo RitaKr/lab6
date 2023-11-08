@@ -12,13 +12,12 @@ export default function Header(){
             <h1 className="header-title">Weather</h1>
             </section>
             <ThemeSwitch/>
-            <button className="btn btn-primary button" onClick={(e)=>{
-                //useEffect(()=>{
-                    setCookie('authenticated', false, { path: '/' });
-                    //setCookie('rememberMe', false, { path: '/' });
-                    //setCookie('uid', null, { path: '/' });
-                    navigate('/');
-                //}, cookies.rememberMe)
+            <button className="btn btn-primary button" onClick={()=>{
+                setCookie('authenticated', false, { path: '/' });
+                //setCookie('rememberMe', false, { path: '/' });
+                //setCookie('uid', null, { path: '/' });
+                navigate('/');
+                //navigating to login page when logging out
                 
             }}>Log out</button>
         </header>

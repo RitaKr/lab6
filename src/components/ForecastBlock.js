@@ -1,18 +1,13 @@
-import { useEffect } from "react";
 
 export default function ForecastBlock({ forecast, formatTime }) {
     const today = new Date();
     const { day, date, astro } = forecast;
     const { condition, daily_chance_of_rain, avghumidity, avgtemp_c, avgvis_km, maxtemp_c, mintemp_c, uv, maxwind_kph} = day;
-    useEffect(() => {
-        //console.log(date, astro.sunrise, astro.sunset, condition, daily_chance_of_rain, avghumidity, avgtemp_c, avgvis_km, maxtemp_c, mintemp_c, uv, maxwind_kph, wind_dir, pressure_mb);
-        //console.log(today.toDateString());
-        determineDay(date)
-    })
-    
+
+    //determines day of the week or today/tomorrow according to current date and given date's day number 
     function determineDay(dateStr) {
         const dateObj = new Date(dateStr);
-        //console.log(dateObj.toDateString());
+
         if (today.toDateString() === dateObj.toDateString()) {
             return "Today"
         } else if (dateObj.getDay() - today.getDay() === 1) {
@@ -30,7 +25,7 @@ export default function ForecastBlock({ forecast, formatTime }) {
         }
     }
     return (
-        <section className={"forecast-block" + (determineDay(date)==="Today" ?" today" :"")}>
+        <section className={"forecast-block" + (determineDay(date)==="Today" ?" today" :"")}> 
             <header className="forecast-header">
                 <section className="forecast-subheader">
                     <section className="day-section">
@@ -44,7 +39,6 @@ export default function ForecastBlock({ forecast, formatTime }) {
             </header>
 
             <article className="forecast-info">
-
                 <p className="temperature">
                     <span>
                         <b>min:</b>  {mintemp_c} C°

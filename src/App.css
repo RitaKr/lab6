@@ -128,6 +128,7 @@
 
 .login-form {
   width: 300px;
+  max-width: 90vw;
   padding: 25px;
   border-radius: 10px;
   display: flex;
@@ -138,6 +139,7 @@
 
 .login-title {
   text-align: center;
+  font-size: 1.8rem;
 }
 
 .form-label {
